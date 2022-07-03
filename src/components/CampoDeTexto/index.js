@@ -1,10 +1,11 @@
 import './CampoDeTexto.css'
 
-const CampoDeTexto = () =>{
+const CampoDeTexto = ({medo,digitaMedo}) =>{
+   
     return(
         <>
-        <label>Digite</label>
-        <input placeholder='Digite seu medo' />
+        <label>Medos </label>
+        <input onChange={e => digitaMedo(e.target.value)} value={medo}  placeholder='Digite seu medo' />
         </>
     )
 }

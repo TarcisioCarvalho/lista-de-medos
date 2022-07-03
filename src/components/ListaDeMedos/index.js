@@ -1,16 +1,31 @@
+import { useState } from 'react';
+
 import CampoDeTexto from '../CampoDeTexto';
 import './ListaDeMedos.css'
 
-const ListaDeMedos = () =>{
+const ListaDeMedos = ({titulo}) =>{
+
+   const [medo,setMedo] = useState('');
+   const [medos,setMedos] = useState([]);
+
+   const adicionaMedo = () =>{
+    setMedos([...medos,medo]);
+    setMedo('');
+   }
+
+  
+
     return (
         <div className='lista-de-medos'>
-        <CampoDeTexto/>
+            <h3>{titulo}</h3>
+        <CampoDeTexto
+            medo = {medo}
+            digitaMedo = {setMedo}
+        />
+        <button onClick={adicionaMedo} >+</button>
         <section >
             <ul>
-                <li>Medo xyz</li>
-                <li>Medo xyz</li>
-                <li>Medo xyz</li>
-                <li>Medo xyz</li>
+                {medos.map(medo => <li key={medo}>{medo}</li>)}
             </ul>
         </section>
         </div>
